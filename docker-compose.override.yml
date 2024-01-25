@@ -1,0 +1,12 @@
+version: "3"
+services:
+
+
+  pal-admin:
+    volumes:
+      - vender:/var/www/pal-admin/vendor
+      - node_modules:/var/www/pal-admin/node_modules
+
+volumes:
+  vender: { }
+  node_modules: { }

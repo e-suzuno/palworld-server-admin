@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  pal-admin:
+    build:
+      context: ./docker/php/
+
+    command: >
+      bash -c "chmod -R 777 /var/www/pal-admin/storage/ &&
+               chmod -R 777 /var/www/pal-admin/database/ &&
+               apache2-foreground"
+    ports:
+      - "80:80"
+      - "5173:5173"
+    container_name: pal-admin
+    environment:
+      APP_STAGING: "true"
+    volumes:
+      - ./src/pal-admin:/var/www/pal-admin
+      - ./docker/php/sites-available:/etc/apache2/sites-available
+    working_dir: /var/www/pal-admin
