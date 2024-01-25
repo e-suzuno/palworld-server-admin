@@ -45,8 +45,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
-                    alert(data.message);
+                    alert("再起動の準備ができました。５分以内に実行されます。");
                 })
                 .catch(error => {
                     console.log(error);

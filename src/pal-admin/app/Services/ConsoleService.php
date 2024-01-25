@@ -19,10 +19,13 @@ class ConsoleService
     //サーバのOSの再起動コマンドを実行する
     public function reboot()
     {
-
         $dir = config("shells.shells_dir");
-        file_put_contents($dir . '/reboot.flag', 'reboot');
-
+        $filename = $dir . '/reboot.flag';
+        if (touch($filename)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
