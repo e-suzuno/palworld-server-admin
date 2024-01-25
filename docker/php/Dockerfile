@@ -14,7 +14,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash \
 RUN a2enmod rewrite
 
 
-
 # apt-get update && install
 RUN apt-get update && apt-get install -y \
     automake autoconf pngquant libpng-dev libxrender1 libfontconfig libxext6 fonts-ipafont \

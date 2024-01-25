@@ -20,9 +20,25 @@ class ConsoleService
     public function reboot()
     {
 
-        $command = config('shells.reboot');
-        $result = $this->exec($command);
-        return $result;
+        $dir = config("shells.shells_dir");
+        file_put_contents($dir . '/reboot.flag', 'reboot');
+
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getSystemInfo()
+    {
+        $dir = config("shells.shells_dir");
+        $command = $dir . "/sysinfo.sh";
+        $output = shell_exec($command);
+        $result = explode("\n", trim($output));
+        return [
+            'cpu_usage' => $result[0],
+            'memory_usage' => $result[1]
+        ];
     }
 
 

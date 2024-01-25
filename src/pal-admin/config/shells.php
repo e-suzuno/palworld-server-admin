@@ -4,5 +4,5 @@
  * シェルファイル一覧
  */
 return [
-    "reboot" => env('SHELLS_DIR', '/path/foo/bar') . "/reboot.sh",
+    "shells_dir" => env('SHELLS_DIR')
 ];
