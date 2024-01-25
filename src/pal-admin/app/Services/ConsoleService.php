@@ -46,6 +46,28 @@ class ConsoleService
 
 
     /**
+     * バックアップコマンドを手動で呼び出す
+     */
+    public function backup(): bool
+    {
+        $dir = config("shells.shells_dir");
+        $command = $dir . "/backup.sh";
+        $output = shell_exec($command);
+        $result = explode("\n", trim($output));
+
+
+        if (!isset($result[2])) {
+            return false;
+        }
+
+        if ($result[2] == "finish") {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
      * @param string $command
      * @return string
      */

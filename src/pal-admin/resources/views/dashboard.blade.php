@@ -18,6 +18,13 @@
                             再起動
                         </x-primary-button>
                     </div>
+
+
+                    <div>
+                        <x-primary-button class="backup-button">
+                            セーブの手動backup
+                        </x-primary-button>
+                    </div>
                 </div>
 
             </div>
@@ -46,6 +53,31 @@
                 .then(response => response.json())
                 .then(data => {
                     alert("再起動の準備ができました。５分以内に実行されます。");
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert(error.message);
+                });
+        });
+
+        //手動バックアップを押した時の処理
+        const backupButton = document.querySelector('.backup-button');
+        backupButton.addEventListener('click', () => {
+            //APIを投げる前に確認させる
+            if (!confirm('セーブの手動backupを実行しますか？')) {
+                return;
+            }
+
+            fetch('/api/backup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("セーブの手動backupを実行しました。");
                 })
                 .catch(error => {
                     console.log(error);

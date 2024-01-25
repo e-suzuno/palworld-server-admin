@@ -18,4 +18,5 @@ services:
     volumes:
       - ./src/pal-admin:/var/www/pal-admin
       - ./docker/php/sites-available:/etc/apache2/sites-available
+      - ./opt/palworld:/opt/palworld
     working_dir: /var/www/pal-admin
