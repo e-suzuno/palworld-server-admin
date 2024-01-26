@@ -30,10 +30,10 @@ Route::middleware('auth')->group(function () {
 
 
     //再起動APIのルーティング
-    Route::post("/api/reboot", [\app\Http\Controllers\Api\RebootApiController::class, "reboot"]);
+    Route::post("/api/reboot", [\App\Http\Controllers\Api\RebootApiController::class, "reboot"]);
 
     //バックアップAPIのルーティング
-    Route::post("/api/backup", [\app\Http\Controllers\Api\BackupApiController::class, "backup"]);
+    Route::post("/api/backup", [\App\Http\Controllers\Api\BackupApiController::class, "backup"]);
 
 
 
