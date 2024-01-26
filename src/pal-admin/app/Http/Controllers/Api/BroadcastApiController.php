@@ -23,7 +23,7 @@ class BroadcastApiController extends Controller
      */
     public function broadcast(Request $request): JsonResponse
     {
-        $message = $request->input('message');
+        $message = $request->input('broadcast_text');
         $this->consoleService->broadcast($message);
         return response()->json(['message' => 'ok']);
     }
