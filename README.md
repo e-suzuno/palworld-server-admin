@@ -28,3 +28,11 @@
 /home/palworld/rcon/rcon -a "127.0.0.1:25575" -p paladmin "Broadcast hohrhohr"
 ```
 
+```
+/home/palworld/rcon/rcon -a "127.0.0.1:25575" -p paladmin  "Shutdown 60 The-server-will-shutdown-in-60-seconds.Please-prepare-to-exit-the-game."
+```
+
+
+
+
+

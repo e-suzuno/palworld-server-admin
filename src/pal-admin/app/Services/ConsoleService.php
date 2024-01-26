@@ -74,11 +74,10 @@ class ConsoleService
      */
     public function showPlayers(): array
     {
-        $result = $this->rcon("ShowPlayers");
+        $result_line = $this->rcon("ShowPlayers");
         //$result は "name,playeruid,steamid"　と帰ってくる
-        $players = explode("\n", $result);
         $player_list = [];
-        foreach ($players as $player) {
+        foreach ($result_line as $player) {
             $player_info = explode(",", $player);
             if (count($player_info) == 3) {
                 $player_list[] = [
@@ -103,7 +102,7 @@ class ConsoleService
 
         Log::info($result);
 
-        if ($result == "Broadcasting: " . $message) {
+        if ($result[0] == "Broadcasting: " . $message) {
             return true;
         } else {
             return false;
@@ -120,7 +119,7 @@ class ConsoleService
      * @param $rcon_command
      * @return string
      */
-    public function rcon($rcon_command): string
+    public function rcon($rcon_command): array
     {
         $rcon_paht = config("shells.rcon_path");
         $pal_admin_password = config("shells.pal_admin_password");
@@ -133,9 +132,10 @@ class ConsoleService
      * @param string $command
      * @return string
      */
-    public function exec(string $command): string
+    public function exec(string $command): array
     {
-        $result = exec($command);
-        return $result;
+        $output = [];
+        exec($command, $output);
+        return $output;
     }
 }
