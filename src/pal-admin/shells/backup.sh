@@ -5,7 +5,7 @@ set -e
 PAL_SAVEGAMES_DIR="/opt/palworld/Pal/Saved/SaveGames"
 BACKUP_DIR="/opt/palworld/backup"
 
-DATE=$(date +"%Y%m%d")
+DATE=$(date +%Y%m%d_%H%M%S)
 DAYS=7  # Number of days to keep backups
 
 create_backup() {
@@ -18,14 +18,7 @@ remove_old_backups() {
   find "${BACKUP_DIR}" -name "backup_*.tar.gz" -mtime +${DAYS} -exec rm {} \;
 }
 
-print_backup_size() {
-  # Print the total size of the backup directory in MB
-  echo "Total size of backup directory in MB:"
-  du -sh --block-size=1M "${BACKUP_DIR}"
-}
-
 create_backup
 remove_old_backups
-print_backup_size
 
 echo "finish"
