@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers\Api;
 
 
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Controllers\Controller;
 use App\Services\ConsoleService;
-use Hamcrest\Core\JavaForm;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 class RebootApiController extends Controller
 {

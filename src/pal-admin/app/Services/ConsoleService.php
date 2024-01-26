@@ -68,6 +68,44 @@ class ConsoleService
 
 
     /**
+     * RCONコマンド、現在ログインしているプレイヤー情報を取得する
+     * @return array<int,array{name: string, playeruid: string, steamid: string}>
+     */
+    public function showPlayers(): array
+    {
+        $result = $this->rcon("ShowPlayers");
+        //$result は "name,playeruid,steamid"　と帰ってくる
+        $players = explode("\n", $result);
+        $player_list = [];
+        foreach ($players as $player) {
+            $player_info = explode(",", $player);
+            if (count($player_info) == 3) {
+                $player_list[] = [
+                    'name' => $player_info[0],
+                    'playeruid' => $player_info[1],
+                    'steamid' => $player_info[2]
+                ];
+            }
+        }
+        return $player_list;
+    }
+
+
+    /**
+     * RCONコマンドを実行する汎用
+     * @param $rcon_command
+     * @return string
+     */
+    public function rcon($rcon_command): string
+    {
+        $rcon_paht = config("shells.rcon_path");
+        $pal_admin_password = config("shells.pal_admin_password");
+        $rcon_host = config("shells.rcon_host");
+
+        return $this->exec($rcon_paht . ' -a "' . $rcon_host . '" -p ' . $pal_admin_password . ' "' . $rcon_command . '" ');
+    }
+
+    /**
      * @param string $command
      * @return string
      */
