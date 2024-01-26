@@ -13,17 +13,19 @@
                 </div>
 
 
-                <x-player-info></x-player-info>
+                <div class="p-6 text-gray-900">
+                    <x-player-info></x-player-info>
+                </div>
 
                 <div class="p-6 text-gray-900">
-                    <div>
+                    <div class="w-8 mb-4">
                         <x-primary-button class="reboot-button">
                             再起動
                         </x-primary-button>
                     </div>
 
 
-                    <div>
+                    <div class="w-8">
                         <x-primary-button class="backup-button">
                             セーブの手動backup
                         </x-primary-button>

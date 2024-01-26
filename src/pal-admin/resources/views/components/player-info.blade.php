@@ -1,20 +1,30 @@
+@php
+
+    //   $tableClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
+       $tableClasses = 'border border-gray-300';
+
+@endphp
+
 <div>
     <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
 
-
-    <table border="1">
+    <div class="">現在のサーバのplayer状況</div>
+    <table class="{{ $tableClasses }}">
+        <tr>
+            <th class="w-48 {{ $tableClasses }}">1</th>
+            <th class="w-48 {{ $tableClasses }}">2</th>
+            <th class="w-48 {{ $tableClasses }}">3</th>
+        </tr>
         <tr>
             @foreach($list as $row)
-                <td>
-
+                <td class="{{ $tableClasses }}">
                     {{ $row['name'] }}
                 </td>
-                <td>
+                <td class="{{ $tableClasses }}">
 
                     {{ $row['playeruid'] }}
                 </td>
-                <td>
-
+                <td class="{{ $tableClasses }}">
                     {{ $row['steamid'] }}
                 </td>
             @endforeach
