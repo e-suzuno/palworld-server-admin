@@ -21,11 +21,11 @@
 
                     <div>Action Button</div>
                     <div class="inline-flex rounded-md shadow-sm" role="group">
-                        <button type="button" class="reboot-button button bg-red-500 text-white {{ $buttonClass }}">
+                        <button type="button" class="reboot-button {{ $buttonClass }}">
                             再起動
                         </button>
 
-                        <button type="button" class="backup-button bg-blue-500 text-white {{ $buttonClass }}">
+                        <button type="button" class="backup-button {{ $buttonClass }}">
                             セーブの手動backup
                         </button>
                     </div>
