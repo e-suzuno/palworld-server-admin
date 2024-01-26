@@ -15,8 +15,8 @@
             <th class="w-48 {{ $tableClasses }}">2</th>
             <th class="w-48 {{ $tableClasses }}">3</th>
         </tr>
-        <tr>
-            @foreach($list as $row)
+        @foreach($list as $row)
+            <tr>
                 <td class="{{ $tableClasses }}">
                     {{ $row['name'] }}
                 </td>
@@ -27,7 +27,7 @@
                 <td class="{{ $tableClasses }}">
                     {{ $row['steamid'] }}
                 </td>
-            @endforeach
-        </tr>
+            </tr>
+        @endforeach
     </table>
 </div>

@@ -99,10 +99,7 @@ class ConsoleService
     public function broadcast(string $message)
     {
         $result = $this->rcon("Broadcast " . $message);
-
-        Log::info($result);
-
-        if ($result[0] == "Broadcasting: " . $message) {
+        if ($result == "Broadcasting: " . $message) {
             return true;
         } else {
             return false;
