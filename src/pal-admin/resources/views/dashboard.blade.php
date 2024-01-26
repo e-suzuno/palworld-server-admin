@@ -17,7 +17,13 @@
                     <x-player-info></x-player-info>
                 </div>
 
+
                 <div class="p-6 text-gray-900">
+                    <x-broadcast-form></x-broadcast-form>
+                </div>
+
+                <div class="p-6 text-gray-900">
+
 
                     <div>Action Button</div>
                     <div class="inline-flex rounded-md shadow-sm" role="group">

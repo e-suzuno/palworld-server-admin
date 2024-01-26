@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     //バックアップAPIのルーティング
     Route::post("/api/backup", [\App\Http\Controllers\Api\BackupApiController::class, "backup"]);
 
+    //ブロードキャストAPIのルーティング
+    Route::post("/api/broadcast", [\App\Http\Controllers\Api\BroadcastApiController::class, "broadcast"]);
+
 
 
 });

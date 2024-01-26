@@ -92,6 +92,29 @@ class ConsoleService
 
 
     /**
+     * パルワールドサーバーにブロードキャストする。
+     * @param string $message
+     * @return bool
+     */
+    public function broadcast(string $message)
+    {
+        $result = $this->rcon("Broadcast " . $message);
+
+        Log::info($result);
+
+        if ($result == "Broadcasting: " . $message) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+    /**
      * RCONコマンドを実行する汎用
      * @param $rcon_command
      * @return string
