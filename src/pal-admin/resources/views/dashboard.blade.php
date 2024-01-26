@@ -12,6 +12,9 @@
                     {{ __("You're logged in!") }}
                 </div>
 
+
+                <x-player-info></x-player-info>
+
                 <div class="p-6 text-gray-900">
                     <div>
                         <x-primary-button class="reboot-button">
