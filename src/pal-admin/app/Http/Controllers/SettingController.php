@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Services\ConsoleService;
 use App\Services\PalWorldSettingService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,10 @@ class SettingController extends Controller
 {
 
 
-    public function __construct(private PalWorldSettingService $palWorldSettingService)
+    public function __construct(
+        private PalWorldSettingService $palWorldSettingService,
+        private ConsoleService $consoleService
+    )
     {
 
     }
@@ -44,6 +48,10 @@ class SettingController extends Controller
         unset($setting["_token"]);
 
         $this->palWorldSettingService->updateSettingFile($setting);
+
+
+        $this->consoleService->reboot();
+
 
         return redirect()->route('setting');
 

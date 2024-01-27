@@ -91,6 +91,7 @@ class ConsoleService
     }
 
 
+
     /**
      * パルワールドサーバーにブロードキャストする。
      * @param string $message
@@ -107,6 +108,12 @@ class ConsoleService
     }
 
 
+
+    public function shutdown()
+    {
+        $result = $this->rcon("Shutdown 60 Shutdown_after_60_seconds");
+        return true;
+    }
 
 
 
