@@ -48,9 +48,7 @@ class SettingController extends Controller
         unset($setting["_token"]);
 
         $this->palWorldSettingService->updateSettingFile($setting);
-
-
-        $this->consoleService->reboot();
+        $this->consoleService->shutdown();
 
 
         return redirect()->route('setting');
