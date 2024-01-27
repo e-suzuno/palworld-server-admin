@@ -40,6 +40,15 @@ Route::middleware('auth')->group(function () {
 
 
 
+    //設定管理画面のルーティンググループ
+    Route::prefix("setting")->group(function () {
+        //設定管理画面のルーティング
+        Route::get("/", [\App\Http\Controllers\SettingController::class, "index"])->name("setting");
+        //設定管理画面の更新ルーティング
+        Route::post("/", [\App\Http\Controllers\SettingController::class, "update"])->name("setting.update");
+    });
+
+
 });
 
 require __DIR__.'/auth.php';
