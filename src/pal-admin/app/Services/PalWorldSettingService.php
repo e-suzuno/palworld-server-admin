@@ -75,7 +75,11 @@ class PalWorldSettingService
      */
     public function updateSettingFile($setting)
     {
-        $path  = $this->getSettingFilePath();
+
+        $dir = config("shells.shells_dir");
+        shell_exec($dir . "/service-stop.sh");
+
+        $path = $this->getSettingFilePath();
 
         $ini = $this->createIniFile($setting);
 
@@ -83,7 +87,18 @@ class PalWorldSettingService
         $backup_path = $path . ".bak";
         copy($path, $backup_path);
 
-        file_put_contents($path, $ini);
+
+        $handle = fopen($path, 'w');
+        if (!$handle) {
+            return false;
+        }
+        //ファイルの処理
+        fwrite($handle, $ini);
+        //ファイルを閉じる
+        fclose($handle);
+
+
+        shell_exec($dir . "/service-start.sh");
 
     }
 
